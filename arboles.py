@@ -7,65 +7,100 @@ class Nodo():
         self.altura=1
 
 class Arbol_AVL():
-    def __init__(self):
-        self.raiz=None
+    def __init__(self,Nodo):
+        self.raiz=Nodo
 
-    def balancear(T):
+    def balancear(Nodo):
 
-        actualizar_altura(T)
-        dif = H(T.izquierda())-H(T.derecha())
+        actualizar_altura(Nodo)
+        dif = H(Nodo.izquierda())-H(Nodo.derecha())
 
         if(dif > 1):
 
-            if (H(T.izquierda().izquierda()) > H(T.izquierda().derecha())):
-                T=rotar_derecha(T)
+            if (H(Nodo.izquierda().izquierda()) > H(Nodo.izquierda().derecha())):
+                Nodo=rotar_derecha(Nodo)
             else:
-                T.izquierda=rotar_izquierda(T.izquierda())
-                T=rotar_derecha(T)
+                Nodo.izquierda=rotar_izquierda(Nodo.izquierda())
+                Nodo=rotar_derecha(Nodo)
         
         elif(dif < 1):
             
-            if( H (T.derecha().derecha()) > H(T.derecha().izquierda()) ):
-                T.rotar_izquierda(T)
+            if( H (Nodo.derecha().derecha()) > H(Nodo.derecha().izquierda()) ):
+                Nodo.rotar_izquierda(Nodo)
             else:
-                T.derecha= rotar_derecha(T.derecha())
-                T=rotar_izquierda(T)
+                Nodo.derecha= rotar_derecha(Nodo.derecha())
+                Nodo=rotar_izquierda(Nodo)
 
-        return T;  
+        return Nodo;  
 
-    def insertar(self,T,valor):
-        if(T == None):
-            self.raiz=Nodo(valor)
+    def insertar(self,Nodo,valor):
+        if(Nodo == None):
             return  Nodo(valor)
         
-        elif(valor < T.valor()):
-            T.izquierda=insertar(T.izquierda(),valor)
+        elif(valor < Nodo.valor()):
+            Nodo.izquierda=insertar(Nodo.izquierda(),valor)
 
-        elif(valor > T.valor()):
-            T.derecha=insertar(T.derecha().valor)
+        elif(valor > Nodo.valor()):
+            Nodo.derecha=insertar(Nodo.derecha().valor)
         else:
             print("valor duplica3")
         
-        return balancear(T)
+        return balancear(Nodo)
 
-    def buscar(valor):
-        actual=self.raiz
-        
-        while(actual!=N)
+    def buscar(self,Nodo,valor):
+        if Nodo is None:
+            return False
+        if Nodo.valor > valor:
+            return self.buscar( Nodo.izquierda,valor)
+        elif Nodo.valor < valor:
+            return self.buscar( Nodo.derecha,valor)
+        return Nodo
 
-    def borrar(T,valor):
-        return T
+    def borrar(Nodo,valor):
+        if(Nodo==None):
+            return Nodo
 
-    def actualizar_altura(T):
-        return T
+        elif(valor < Nodo.valor()):
+            Nodo.izquierda=borrar(Nodo.izquierda(),valor)
+
+        elif(valor > Nodo.valor()):
+            Nodo.derecha=borrar(Nodo.derecha(),valor)
+        else:
+            if(Nodo.izquierda==None):
+                Nodo =  Nodo.derecha
+
+            elif(Nodo.derecha==None):
+                Nodo = Nodo.izquierda
+            
+            else:
+                decendiente_masizq=decendiente_masizq(Nodo.derecha())
+                Nodo.valor=decendiente_masizq.valor
+                Nodo.derecha=borrar(Nodo.derecha(),N.valor())
+
+        if(Nodo!= None):
+            Nodo =balancear(Nodo)
+        return Nodo
+
+    def H(Nodo):
+        return Nodo.altura
     
-    def H(T):
-        if (T==None):
+    def actualizar_altura(Nodo):
+        if (Nodo==None):
             return 0
         else:
-           
-            return T.altura + max(H(T.derecha()),H(T.ezquierda()))
-        
+            Nodo.altura=Nodo.altura + max(H(Nodo.derecha()),H(Nodo.ezquierda()))
+            return Nodo.altura
+
+    def decendiente_masizq(Nodo):
+        if(Nodo==None):
+            return None
+        else:
+            if (Nodo.ezquierda()!=None):
+                decendiente_masizq(Nodo.izquierda)
+            else:
+                return Nodo
+
+
 
 
 
