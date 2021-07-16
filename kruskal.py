@@ -1,6 +1,3 @@
-
-
-#Algoritmo de Kruskal
 # Kruskal's algorithm in Python
 
 
@@ -51,6 +48,8 @@ class Graph:
                 self.apply_union(parent, rank, x, y)
         for u, v, weight in result:
             print("%d - %d: %d" % (u, v, weight))
+
+
 g = Graph(6)
 g.add_edge(0, 1, 4)
 g.add_edge(0, 2, 4)
@@ -68,5 +67,3 @@ g.add_edge(4, 3, 3)
 g.add_edge(5, 2, 2)
 g.add_edge(5, 4, 3)
 g.kruskal_algo()
-#Algoritmo de Prim
-
